@@ -10,7 +10,7 @@ public class UserInsert {
 
 	public void registerUser (User user) throws Exception {
 		// Connection to MySql
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/books?serverTimezone=UTC", "root", "Coco1013!");
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/books?serverTimezone=UTC", "root", "root");
 		
 		// Insert row
 		String insertSql = "INSERT INTO user (first_name, last_name, username, password, email) "
