@@ -2,10 +2,10 @@
 <%@ page import="java.sql.*"%>
 <html>
 <head>
-    <title>CloudBook Checkout</title>
+    <title>CloudBook Check Out</title>
 </head>
 <body>
-<h1>Your order</h1>
+<h1>CloudBook Check Out</h1>
 <%
     String db = "Cheah";
     String user; // assumes database name is the same as username
@@ -19,7 +19,7 @@
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM checkout");
         while (rs.next()) {
-            out.println(rs.getString("bookName") + " - " + rs.getString("info") + " - " + rs.getString("price") + " - "+ rs.getInt("bookId") + "<br/><br/>");
+            out.println("BOOK NAME: " + rs.getString("bookName") + " - INFO: " + rs.getString("info") + " - PRICE: $" + rs.getString("price") + " - ID: "+ rs.getInt("bookId") + "<br/><br/>");
         }
         rs.close();
         stmt.close();
