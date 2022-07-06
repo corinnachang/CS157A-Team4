@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Success</title>
+        <title>Fail</title>
     </head>
     <body>
         <nav>     
@@ -9,6 +9,6 @@
             <a href="./login.jsp">Login</a>
             <a href="./newUser.jsp">Create Account</a></br>
         </nav>
-        <h1>Success!</h1>
+        <h1>Fail!</h1>
     </body>
 </html>
