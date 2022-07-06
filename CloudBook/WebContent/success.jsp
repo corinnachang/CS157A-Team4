@@ -9,6 +9,6 @@
             <a href="./login.jsp">Login</a>
             <a href="./newUser.jsp">Create Account</a></br>
         </nav>
-        <h1>Account successfully created!</h1>
+        <h1>Success!</h1>
     </body>
 </html>
