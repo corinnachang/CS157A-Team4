@@ -7,7 +7,7 @@
         <title> JSP Page </title>
     <head>
     <body>
-    <center>
+    <div align="center">
         <table border="1">
             <tr>
                 <th>Title</th>
@@ -42,6 +42,6 @@
                     }
                 %>
         </table>
-    </center>
+    </div>
     </body>
 </html>
