@@ -10,26 +10,31 @@
       <tr>
         <td>Title</td>
         <td>Author</td>
-        <td>Genre</td>
-        <td>ISBN</td>
+        <td>Publisher</td>
+        <td>Price</td>
    </tr>
     <%
-     String db = "HamzaKhan";
+     
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "Venatorclass";
+        String password = "root";
         try {
 
             java.sql.Connection con;
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CloudBook?autoReconnect=true&useSSL=false",user, password);
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook?autoReconnect=true&useSSL=false",user, password);
 
 
-            out.println("Current Available Books: <br/>");
+            out.println("Current Available Books: <br/><br/>");
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Inventory");
+            ResultSet rs = stmt.executeQuery("SELECT title, first_name, last_name, publisher_name, price "
+            		+"FROM book JOIN listing USING (book_id) "
+            		+"JOIN author USING (author_id) "
+            		+"JOIN publisher USING (publisher_id);");
             while (rs.next()) {
-                out.println(rs.getString(1) + " - " + rs.getString(2) + " - " + rs.getString(3) + " - "+ rs.getInt(4) + "<br/><br/>");
+                out.println(rs.getString(1) + ". Author: " + rs.getString(2) + " " + rs.getString(3) 
+                	+ ". Publisher: "+ rs.getString(4) + ". Price: " 
+                	+ rs.getInt(5) + "<br/><br/>");
             }
             rs.close();
             stmt.close();
