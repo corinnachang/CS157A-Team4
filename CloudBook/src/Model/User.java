@@ -7,7 +7,7 @@ public class User {
     private String lastName;
     private String username;
     private String password;
-    private String email;
+    private String address;
 
   
     public String getFirstName() {
@@ -42,11 +42,11 @@ public class User {
         this.password = password;
     }
     
-    public String getEmail() {
-        return email;
+    public String getAddress() {
+        return address;
     }
     
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

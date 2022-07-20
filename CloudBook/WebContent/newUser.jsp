@@ -33,8 +33,8 @@
                <td><input type="password" name="password" /></td>
               </tr>
               <tr>
-               <td>Email</td>
-               <td><input type="text" name="email" /></td>
+               <td>Address</td>
+               <td><input type="text" name="address" /></td>
               </tr>
              </table>
              <input type="submit" value="Submit" />
