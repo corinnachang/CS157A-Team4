@@ -30,7 +30,7 @@ public class UserServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String email = request.getParameter("email");
+        String address = request.getParameter("address");
 
         //enter user input into new user
         User user = new User();
@@ -38,7 +38,7 @@ public class UserServlet extends HttpServlet {
         user.setLastName(lastName);
         user.setUsername(username);
         user.setPassword(password);
-        user.setEmail(email);
+        user.setAddress(address);
 
         try {
         	userInsert.registerUser(user); //register user
