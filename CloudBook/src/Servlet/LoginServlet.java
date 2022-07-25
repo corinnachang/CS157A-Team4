@@ -32,13 +32,30 @@ public class LoginServlet extends HttpServlet {
 
 		try {
 			userLogin.validate(user); 
-			if(userLogin.isSuccess()) {
-				response.sendRedirect("success.jsp");
-				System.out.println("success");
-			} else {
-				response.sendRedirect("fail.jsp");
-				System.out.println("fail");
-			}
+
+			
+			String destPage = "login.jsp";
+            
+            if (userLogin.isSuccess()) {
+                HttpSession session = request.getSession();
+                session.setAttribute("firstName", user.getFirstName());
+                session.setAttribute("lastName", user.getLastName());
+                session.setAttribute("username", user.getUsername());
+                session.setAttribute("password", user.getPassword());
+                session.setAttribute("address", user.getAddress());
+                destPage = "userAccount.jsp";
+            }
+            else {
+                String message = "Invalid email or password. Please try again.";
+                request.setAttribute("message", message);
+            	//destPage = "fail.jsp";
+            }
+             
+            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
+            dispatcher.forward(request, response);
+			
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
