@@ -2,7 +2,17 @@
 <html>
   <head>
     <title>Available Books</title>
-    </head>
+    
+    <!-- use jquery to include same header for every page -->
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script> 
+			$(function(){
+				$("#header").load("header.html"); 
+			});
+		</script>
+	</head>
+<body>
+	<div id="header"></div>
   <body align ="center">
     <h1>Available Books</h1>
 
