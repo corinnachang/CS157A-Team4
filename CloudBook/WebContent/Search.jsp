@@ -33,7 +33,7 @@
 
                         java.sql.Connection con;
                         Class.forName("com.mysql.jdbc.Driver");
-                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudBook?autoReconnect=true&useSSL=false","root", "Venatorclass");
+                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudBook?autoReconnect=true&useSSL=false","root", "root");
 
                         Statement st = con.createStatement();
                         String user = request.getParameter("user");
@@ -41,7 +41,7 @@
                                             + "JOIN author USING (author_id) "
                                             + "JOIN publisher USING (publisher_id)"
                                             + "JOIN genre USING (genre_id)"
-                                            + "WHERE Title ='"+user+"' OR genre_name = '"+user+"' OR first_name = '"+user+"' OR publisher_name = '"+user+"' HAVING COUNT(book_id) = 1";
+                                            + "WHERE Title ='"+user+"' OR genre_name = '"+user+"' OR first_name = '"+user+"' OR publisher_name = '"+user+"' ";
                         rs = st.executeQuery(sqlStr);
 
                       while (rs.next()) {
