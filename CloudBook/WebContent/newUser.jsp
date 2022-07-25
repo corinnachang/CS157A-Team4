@@ -5,13 +5,17 @@
     <head>
 
         <title>CloudBook Registration</title>
+        
+        <!-- use jquery to include same header for every page -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script > 
+			$(function(){
+				$("#header").load("header.html"); 
+			});
+		</script> 
     </head>
     <body>
-        <nav>     
-            <a href="./homePage.jsp">Home</a>
-            <a href="./login.jsp">Login</a>
-            <a href="./newUser.jsp">Create Account</a></br>
-        </nav>
+    	<div id="header"></div>
         <div align="center">
             <h1>Create account</h1>
   			<form action="<%= request.getContextPath() %>/register" method="post">

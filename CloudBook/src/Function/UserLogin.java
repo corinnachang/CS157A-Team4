@@ -15,18 +15,36 @@ public class UserLogin {
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook?serverTimezone=UTC", "root", "root");
 		
 		// Read row
-		String selectSql = "SELECT password FROM customer WHERE username='" + user.getUsername() + "'";
+		String selectSql = "SELECT * FROM customer WHERE username='" + user.getUsername() + "' AND password='" + user.getPassword() + "'";
 		//System.out.println(selectSql);
 		
 		Statement statement = connection.createStatement();
 		ResultSet rs = statement.executeQuery(selectSql);
 		
 		//String pwd = "";
-		while(rs.next())
+		if(rs.next())
         {
-            String pwd = rs.getString(1);
-            if(pwd.equals(user.getPassword()))
-            	success = true;
+            user.setFirstName(rs.getString("first_name"));
+            user.setLastName(rs.getString("last_name"));
+            int addressID = rs.getInt("address_id");
+            
+            String querySqlAddress = "SELECT address FROM address WHERE address_id=" + addressID + ";";
+    		//System.out.println(querySqlAddress);
+    		
+    		
+    		ResultSet rsAddress = statement.executeQuery(querySqlAddress);
+    		
+    		
+    		while(rsAddress.next())
+    		{
+    		    
+    			user.setAddress(rsAddress.getString("address"));
+    		}		
+    		
+    		
+            success = true;
+            
+            rsAddress.close();
             
         }
 		
@@ -38,8 +56,6 @@ public class UserLogin {
 		
 	}
 	
-	public Boolean isSuccess() {
-		return success;
-	}
-
+	public Boolean isSuccess() { return success; }
+	
 }
