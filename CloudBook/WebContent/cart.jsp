@@ -29,7 +29,7 @@
     <body>
     	<jsp:include page="header.jsp"/><br>
     	<div align = "center">
-        	<h1>${firstName}'s Cart</h1>
+        	<h1>${firstName}'s Shopping Cart</h1>
 			
 			<%
 		        String user = "root";
