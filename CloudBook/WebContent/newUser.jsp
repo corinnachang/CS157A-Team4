@@ -3,21 +3,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-        <title>CloudBook Registration</title>
-        
-        <!-- use jquery to include same header for every page -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		<script > 
-			$(function(){
-				$("#header").load("header.html"); 
-			});
-		</script> 
+        <title>CloudBook Registration</title> 
+        <style>
+			.button {
+				color: white;
+	            background: #2581DC;
+	            border: 3px solid #2581DC;
+	            border-radius: 5px 5px 5px 5px;
+	            outline: none;
+			}
+    	</style>
     </head>
     <body>
-    	<div id="header"></div>
+    	<jsp:include page="header.jsp"/><br>
         <div align="center">
-            <h1>Create account</h1>
+            <h1>Create Account</h1>
   			<form action="<%= request.getContextPath() %>/register" method="post">
              <table>
               <tr>
@@ -41,7 +41,7 @@
                <td><input type="text" name="address" /></td>
               </tr>
              </table>
-             <input type="submit" value="Submit" />
+             <input type="submit" value="Submit" class="button"/>
             </form>
            </div>
     </body>

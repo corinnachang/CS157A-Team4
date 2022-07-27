@@ -2,26 +2,33 @@
 <html>
     <head>
         <title>User Login</title>
-        
-        <!-- use jquery to include same header for every page -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		<script > 
-			$(function(){
-				$("#header").load("header.html"); 
-			});
-		</script> 
+        <style>
+        	.inputBox {
+	            border: 3px solid #2581DC;
+	            border-radius: 5px 5px 5px 5px;
+	            outline: none;
+			}
+		
+        	.loginButton {
+	            color: white;
+	            background: #2581DC;
+	            border: 3px solid #2581DC;
+	            border-radius: 5px 5px 5px 5px;
+	            outline: none;            
+			}
+        </style>
     </head>
     <body>
-    	<div id="header"></div>
+    	<jsp:include page="header.jsp"/><br>
         <div align="center">
             <h1>User Login</h1>
             <form action="<%=request.getContextPath()%>/login" method="post">
 	            <label>Username: </label>
-	            <input type="text" name="username" /><br><br>
+	            <input type="text" name="username" class="inputBox"/><br><br>
 	            <label for="password">Password: </label>
-	            <input type="text" name="password" /><br>
-	            ${message}<br><br>           
-	            <button type="submit">Login</button>
+	            <input type="text" name="password" class="inputBox"/><br>
+	            ${message}<br>           
+	            <button type="submit" class="loginButton">Login</button>
             </form>
         </div>
     </body>

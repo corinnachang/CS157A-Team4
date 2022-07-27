@@ -2,17 +2,18 @@
 <html>
     <head>
         <title>User Account</title>
-        
-        <!-- use jquery to include same header for every page -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		<script > 
-			$(function(){
-				$("#header").load("header.html"); 
-			});
-		</script> 
+        <style>
+        	.button {
+	            color: white;
+	            background: #2581DC;
+	            border: 3px solid #2581DC;
+	            border-radius: 5px 5px 5px 5px;
+	            outline: none;            
+			}
+        </style>
     </head>
     <body>
-    	<div id="header"></div>
+    	<jsp:include page="header.jsp"/><br>
     	<div align = "center">
         	<h1>Profile</h1>
         	
@@ -41,14 +42,13 @@
 			%> 
 			
         	<br><br>
-        	<form action="<%=request.getContextPath()%>/logout" method="post">
-	            <button type="submit">Logout</button>
+        	<form action="./cart.jsp" method="post">
+	            <button type="submit" class="button">Shopping Cart</button>
             </form>
             <br>
-            <form action="./cart.jsp" method="post">
-	            <button type="submit">Shopping Cart</button>
+        	<form action="<%=request.getContextPath()%>/logout" method="post">
+	            <button type="submit" class="button">Logout</button>
             </form>
-        	
     	</div>
     </body>
 </html>

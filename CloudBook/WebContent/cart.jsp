@@ -3,16 +3,15 @@
 <html>
     <head>
         <title>Shopping Cart</title>
-        
-        <!-- use jquery to include same header for every page -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		<script > 
-			$(function(){
-				$("#header").load("header.html"); 
-			});
-		</script> 
-		
 		<style>
+			.checkoutButton {
+				color: white;
+	            background: #2581DC;
+	            border: 3px solid #2581DC;
+	            border-radius: 5px 5px 5px 5px;
+	            outline: none;
+			}
+			
 	        table,
 	        th,
 	        td {
@@ -23,18 +22,14 @@
 	        }
 	 
 	        tr:nth-child(odd) {
-	            background-color: lightgray;
+	            background-color: lightskyblue;
 	        }
     	</style>
-		
-		
     </head>
     <body>
-    	<div id="header"></div>
+    	<jsp:include page="header.jsp"/><br>
     	<div align = "center">
         	<h1>${firstName}'s Cart</h1>
-        	
-        
 			
 			<%
 		        String user = "root";
@@ -61,14 +56,14 @@
 		            		"<th>Title</th>" +
 		            		"<th>Price</th>" +
 		            		"</tr>");
-		            int total = 0;
+		            double total = 0;
 		            while (rs.next()) {
 	            	    out.write("<tr><td>" + rs.getString(1) + "</td>");
-	            	    out.write("<td>" + rs.getInt(2) + "</td></tr>");
-	            	    total += rs.getInt(2);
+	            	    out.write("<td>$" + rs.getDouble(2) + "0</td></tr>");
+	            	    total += rs.getDouble(2);
 	            	}
 		            out.write("<tr><th>Total</th>");
-		            out.write("<th>" + total + "</th></tr>");
+		            out.write("<th>$" + total + "0</th></tr>");
 		            out.write("</table>");
 		           
 		            
@@ -80,6 +75,10 @@
 		        }
 		    %>
 			
+			<br>
+			<form action="<%=request.getContextPath()%>/checkout?????" method="post">
+				<button type="submit" class="checkoutButton">Checkout</button>
+			</form>
         	
     	</div>
     </body>
