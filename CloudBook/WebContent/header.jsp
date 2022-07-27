@@ -73,7 +73,7 @@
 					<a href="./login.jsp">User Login</a>
 					<a href="./newUser.jsp">Create New Account</a>
 					<a href="./userAccount.jsp">Go to Account</a>
-					<a href="./--------">Admin Login</a>
+					<a href="./adminLogin.jsp">Admin Login</a>
 				</div>
 			</div>
 		</div>
