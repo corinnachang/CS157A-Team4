@@ -17,6 +17,20 @@
 	        tr:nth-child(odd) {
 	            background-color: lightskyblue;
 	        }
+	        
+	        .searchBox {
+            border: 3px solid #2581DC;
+            border-radius: 5px 5px 5px 5px;
+            outline: none;
+			}
+	
+			.searchButton {
+	            color: white;
+	            background: #2581DC;
+	            border: 3px solid #2581DC;
+	            border-radius: 5px 5px 5px 5px;
+	            outline: none;            
+			}
 	   	</style>  
     <head>
 
@@ -70,6 +84,23 @@
                     }
                 %>
         </table>
+        
+        <br><br>
+        <h3>Add Book to Cart</h3>
+        <form method="post" action="addcart.jsp">
+		    Book Title: 
+        	<input type="text" name="book_title" class="searchBox"/><br><br>
+        	
+        	Book Author: 
+        	<input type="text" name="book_author" class="searchBox"/><br><br>
+    			
+		    Customer First Name:
+		    <input type="text" name="customer_firstName" class="searchBox"/><br><br>
+		    
+		    Customer Last Name:
+		    <input type="text" name="customer_lastName" class="searchBox"/><br><br>
+        	<input type="submit" value="Add to Cart" class="searchButton"/>
+        </form>
     </div>
     </body>
 </html>
