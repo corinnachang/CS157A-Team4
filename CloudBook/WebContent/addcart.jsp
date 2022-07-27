@@ -7,11 +7,11 @@ String customer_ident=request.getParameter("customer_ident");
 
 try
 {
+         java.sql.Connection con;
          Class.forName("com.mysql.jdbc.Driver");
-           Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "");
-           Statement st=conn.createStatement();
-           int i=st.executeUpdate("insert into shopping_cart(customer_id,book_id)values('"+customer_ident+"','"+book_ident+"')");
-        out.println("Data is successfully inserted!");
+         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudBook?autoReconnect=true&useSSL=false","root", "Venatorclass");
+         int i=st.executeUpdate("insert into shopping_cart(customer_id,book_id)values('"+customer_ident+"','"+book_ident+"')");
+        out.println("Book Added to Cart!");
         }
         catch(Exception e)
         {
