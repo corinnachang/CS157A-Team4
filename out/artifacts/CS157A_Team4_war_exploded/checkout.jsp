@@ -44,7 +44,7 @@
     <%
         //^if submit button pressed, clear cart
     String x = request.getParameter("submit");
-    if(x!=null && x.equals("confirm")) {
+    if(x.equals("confirm")) {
         try {
             java.sql.Connection con;
             Class.forName("com.mysql.jdbc.Driver");
