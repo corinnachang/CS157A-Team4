@@ -53,7 +53,6 @@
             int clearCart = st.executeUpdate("DELETE FROM shopping_cart");
             st.close();
             con.close();
-            out.println("Checked Out Successfully!");
         } catch (SQLException e) {
             out.println("SQLException caught: " + e.getMessage());
         }
