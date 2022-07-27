@@ -1,0 +1,152 @@
+INSERT INTO `address` VALUES 
+(1,'5618 Thackeray Junction'),
+(2,'270 Toulon Boulevard'),
+(3,'391 Callao Drive'),
+(4,'909 Garland Manor'),
+(5,'929 Tallahassee Loop'),
+(6,'765 Southampton Drive'),
+(7,'456 Escobar Way'),
+(8,'1166 Changhwa Street'),
+(9,'43 Dadu Avenue'),
+(10,'144 South Hill Loop');
+
+INSERT INTO `customer` VALUES 
+(1,'Penelope','Guiness','penelopeg','password',2),
+(2,'Nick','Chase','nickc','password',1),
+(3,'Ed','Davis','edd','password',3),
+(4,'Jennifer','Nicholson','jennifern','password',4),
+(5,'Johnny','Mostel','johnnym','password',7),
+(6,'Bette','Olivier','betteo','password',5),
+(7,'Grace','Wahlberg','gracew','password',6),
+(8,'Matthew','Kilmer','matthewk','password',8),
+(9,'Joe','Peck','joep','password',9),
+(10,'Christina','Wayne','christinaw','password',10);
+
+INSERT INTO `author` VALUES 
+(1,'Joan','Aiken'),
+(2,'Kate','Atkinson'),
+(3,'Michael','Feathers'),
+(4,'Neil','Gaiman'),
+(5,'Susan','Howatch'),
+(6,'Stephen','Kochan'),
+(7,'Jesse','McCorkle'),
+(8,'Jill','McCorkle'),
+(9,'Michael','Smith'),
+(10,'John','Tolkien');
+
+INSERT INTO `publisher` VALUES 
+(1,'Algonquin Books'),
+(2,'Back Bay Books'),
+(3,'Crystal Clarity Publishers'),
+(4,'Fontana'),
+(5,'Harper'),
+(6,'HarperCollins'),
+(7,'PerfectBound'),
+(8,'Prentice Hall'),
+(9,'Sams'),
+(10,'William Morrow');
+
+INSERT INTO `genre` VALUES 
+(1,'Action'),
+(2,'Biography'),
+(3,'Children'),
+(4,'Classic'),
+(5,'Comic'),
+(6,'Drama'),
+(7,'Fantasy'),
+(8,'Graphic Novel'),
+(9,'History'),
+(10,'Mystery'),
+(11,'Poetry'),
+(12,'Romance'),
+(13,'Science Fiction'),
+(14,'Textbook'),
+(15,'Thriller');
+
+INSERT INTO `book` VALUES 
+(1,'A Small Pinch of Weather',1,6,8,2000,25),
+(2,'American Gods',4,7,13,2001,30),
+(3,'Glittering Images',5,4,3,1996,2),
+(4,'Good Omens',4,10,7,2007,15),
+(5,'Healing Therapies for Overcoming Insomnia',7,3,14,2005,7),
+(6,'Life After Life',8,1,12,2013,6),
+(7,'Life After Life',2,2,9,2014,12),
+(8,'Programming in C',6,9,14,2004,120),
+(9,'Scandalous Risks',5,5,6,2009,25),
+(10,'Spares',9,6,10,1998,100),
+(11,'Tales from the Perilous Realm',10,6,1,2002,200),
+(12,'Working Effectively with Legacy Code',3,8,2,2004,50);
+
+INSERT INTO `admin` VALUES 
+(1,'Todd','Bean'),
+(2,'Corey','Guzman'),
+(3,'Katie','Hale'),
+(4,'Paul','Jones'),
+(5,'Claire','Jones'),
+(6,'Tatiana','Knight'),
+(7,'Cameron','Williams'),
+(8,'Julia','Hopkins'),
+(9,'Jane','Jackman'),
+(10,'Adam','Hopper');
+
+INSERT INTO `listing` VALUES 
+(1,1,1),
+(2,1,4),
+(3,2,10),
+(4,3,2),
+(5,3,7),
+(6,3,6),
+(7,4,2),
+(8,5,4),
+(9,6,6),
+(10,6,1),
+(11,7,4),
+(12,7,6),
+(13,7,6),
+(14,8,4),
+(15,8,6),
+(16,8,2),
+(17,8,3),
+(18,9,3),
+(19,10,7),
+(20,10,5),
+(21,11,3),
+(22,12,7),
+(23,12,8),
+(24,12,9),
+(25,12,5);
+
+INSERT INTO `shopping_cart` VALUES 
+(1,1,1),
+(2,1,5),
+(3,1,11),
+(4,2,9),
+(5,3,3),
+(6,3,12),
+(7,4,2),
+(8,4,5),
+(9,4,6),
+(10,4,10),
+(11,5,7),
+(12,6,2),
+(13,7,1),
+(14,7,7),
+(15,7,8),
+(16,8,4),
+(17,8,5),
+(18,9,3),
+(19,10,7),
+(20,10,9),
+(21,10,11);
+
+INSERT INTO `checkout` VALUES 
+(1,1,232),
+(2,2,25),
+(3,3,52),
+(4,4,143),
+(5,5,12),
+(6,6,30),
+(7,7,157),
+(8,8,22),
+(9,9,237),
+(10,10,237);
