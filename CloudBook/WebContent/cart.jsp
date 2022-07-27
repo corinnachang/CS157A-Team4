@@ -31,17 +31,31 @@
     	<div align = "center">
         	<h1>${firstName}'s Shopping Cart</h1>
 			
+			<!-- get user info from session -->
+        	<%
+        		String firstName = (String)session.getAttribute("firstName"); 
+            	session.setAttribute("firstName", firstName); 
+				
+				String lastName = (String)session.getAttribute("lastName"); 
+				session.setAttribute("lastName", lastName);
+				
+				String username = (String)session.getAttribute("username"); 
+				session.setAttribute("username", username);
+				
+				String password = (String)session.getAttribute("password"); 
+				session.setAttribute("password", password);
+				
+				String address = (String)session.getAttribute("address"); 
+				session.setAttribute("address", address);
+			%> 
+			
 			<%
-		        String user = "root";
-		        String password = "root";
+		        
 		        try {
 		        	
-		        	String firstName = (String) session.getAttribute("firstName");
-	        		String lastName = (String) session.getAttribute("lastName");		
-		            
 		        	java.sql.Connection con;
 		            Class.forName("com.mysql.jdbc.Driver");
-		            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook?autoReconnect=true&useSSL=false",user, password);
+		            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook?autoReconnect=true&useSSL=false", "root", "root");
 		
 		
 		            //out.println("Current Available Books: <br/><br/>");
@@ -65,7 +79,8 @@
 		            out.write("<tr><th>Total</th>");
 		            out.write("<th>$" + total + "0</th></tr>");
 		            out.write("</table>");
-		           
+		            
+		            session.setAttribute("total", total);
 		            
 		            rs.close();
 		            stmt.close();
@@ -76,7 +91,7 @@
 		    %>
 			
 			<br>
-			<form action="<%=request.getContextPath()%>/checkout?????" method="post">
+			<form action="./checkout.jsp" method="post">
 				<button type="submit" class="checkoutButton">Checkout</button>
 			</form>
         	
