@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
+<!DOCTYPE html>
 <html>
 <head>
     <title>CloudBook Check Out</title>
@@ -17,18 +18,41 @@
         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook",user, password);
         out.println("Your Cart: <br/>");
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM checkout");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM book");
+        Double total = 0.0;
         while (rs.next()) {
-            out.println("BOOK NAME: " + rs.getString("bookName") + " - INFO: " + rs.getString("info") + " - PRICE: $" + rs.getString("price") + " - ID: "+ rs.getInt("bookId") + "<br/><br/>");
-        }
-        ResultSet res = stmt.executeQuery("SELECT * FROM checkout");
-        while (res.next()) {
-            out.println("BOOK NAME: " + res.getString("bookName") + " - INFO: " + res.getString("info") + " - PRICE: $" + res.getString("price") + " - ID: "+ res.getInt("bookId") + "<br/><br/>");
+            out.println("BOOK NAME: " + rs.getString("book.title") + " - PRICE: $" + rs.getString("book.price") + " - BOOK ID: "+ rs.getInt("book.book_id") + "<br/><br/>");
+            total += rs.getDouble("book.price");
         }
         rs.close();
         stmt.close();
         con.close();
-    } catch(SQLException e) {
+        out.println("Total will be:" + total);
+        //get all books' prices from book table
+        //sum them up add into amount of checkout table
+        //print amount
+        //check out button
+        //print if successful
+    }catch(SQLException e) {
+        out.println("SQLException caught: " + e.getMessage());
+    }
+%>
+<form method="post" action="checkout.jsp">
+    <input type="submit" value="Pay & Check Out">
+</form>
+
+    <%
+        //^if submit button pressed, clear cart
+        try {
+        java.sql.Connection con;
+        Class.forName("com.mysql.jdbc.Driver");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook",user, password);
+        Statement st= con.createStatement();
+        int clearCart = st.executeUpdate("DELETE FROM shopping_cart");
+        st.close();
+        con.close();
+        out.println("Checked Out Successfully!");
+    }catch(SQLException e) {
         out.println("SQLException caught: " + e.getMessage());
     }
 %>
