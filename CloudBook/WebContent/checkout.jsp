@@ -38,22 +38,28 @@
     }
 %>
 <form method="post" action="checkout.jsp">
-    <input type="submit" value="Pay & Check Out">
+    <input type="submit" value="Pay & Check Out" name ="submit">
 </form>
 
     <%
         //^if submit button pressed, clear cart
+    String x = request.getParameter("submit");
+    if(x!=null && x.equals("confirm")) {
         try {
-        java.sql.Connection con;
-        Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook",user, password);
-        Statement st= con.createStatement();
-        int clearCart = st.executeUpdate("DELETE FROM shopping_cart");
-        st.close();
-        con.close();
-        out.println("Checked Out Successfully!");
-    }catch(SQLException e) {
-        out.println("SQLException caught: " + e.getMessage());
+            java.sql.Connection con;
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook", user, password);
+            Statement st = con.createStatement();
+            int clearCart = st.executeUpdate("DELETE FROM shopping_cart");
+            st.close();
+            con.close();
+            out.println("Checked Out Successfully!");
+        } catch (SQLException e) {
+            out.println("SQLException caught: " + e.getMessage());
+        }
+    }
+    else{
+        out.println("Please click to Pay & Check Out!");
     }
 %>
 <a href="./homePage.jsp">Home</a>
