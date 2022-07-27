@@ -62,6 +62,7 @@
         out.println("Please click to Pay & Check Out!");
     }
 %>
+<br>
 <a href="./homePage.jsp">Home</a>
 </body>
 </html>
