@@ -50,7 +50,7 @@
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook", user, password);
             Statement st = con.createStatement();
-            st.executeUpdate("DELETE FROM shopping_cart WHERE 1=1 ");
+            st.executeUpdate("DELETE FROM shopping_cart LIMIT 1000");
             st.close();
             con.close();
         }catch (SQLException e) {
