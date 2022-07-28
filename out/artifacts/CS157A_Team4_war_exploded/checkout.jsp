@@ -50,11 +50,10 @@
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook", user, password);
             Statement st = con.createStatement();
-            int clearCart = st.executeUpdate("DELETE FROM shopping_cart");
+            int i = st.executeUpdate("DELETE FROM shopping_cart");
             st.close();
             con.close();
-            out.println("Checked Out Successfully!");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             out.println("SQLException caught: " + e.getMessage());
         }
     }
