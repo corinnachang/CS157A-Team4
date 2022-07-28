@@ -39,6 +39,7 @@
     <div align="center">
         <table border="1">
             <tr>
+                <th>Book ID</th>
                 <th>Title</th>
                 <th>Genre</th>
                 <th>Author First Name</th>
@@ -68,6 +69,7 @@
                       while (rs.next()) {
                           %>
                           <tr>
+                          <td><%=rs.getInt("book_id") %></td>
                           <td><%=rs.getString("title") %></td>
                           <td><%=rs.getString("genre_name") %></td>
                           <td><%=rs.getString("first_name") %></td>
@@ -88,17 +90,11 @@
         <br><br>
         <h3>Add Book to Cart</h3>
         <form method="post" action="addcart.jsp">
-		    Book Title: 
-        	<input type="text" name="book_title" class="searchBox"/><br><br>
-        	
-        	Book Author: 
-        	<input type="text" name="book_author" class="searchBox"/><br><br>
-    			
-		    Customer First Name:
-		    <input type="text" name="customer_firstName" class="searchBox"/><br><br>
-		    
-		    Customer Last Name:
-		    <input type="text" name="customer_lastName" class="searchBox"/><br><br>
+		    Book ID: 
+        	<input type="text" name="book_id" class="searchBox"/><br><br>
+        	    			
+		    Customer Username:
+		    <input type="text" name="customer_username" class="searchBox"/><br><br>
         	<input type="submit" value="Add to Cart" class="searchButton"/>
         </form>
     </div>

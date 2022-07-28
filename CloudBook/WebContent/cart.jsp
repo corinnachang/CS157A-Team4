@@ -4,7 +4,7 @@
     <head>
         <title>Shopping Cart</title>
 		<style>
-			.checkoutButton {
+			.button {
 				color: white;
 	            background: #2581DC;
 	            border: 3px solid #2581DC;
@@ -60,23 +60,25 @@
 		
 		            //out.println("Current Available Books: <br/><br/>");
 		            Statement stmt = con.createStatement();
-		            ResultSet rs = stmt.executeQuery("SELECT title, price FROM book "
+		            ResultSet rs = stmt.executeQuery("SELECT * FROM book "
 		            		+ "WHERE book_id IN (SELECT book_id FROM shopping_cart " 
 		            		+ "WHERE customer_id = (SELECT customer_id FROM customer "
 		            		+ "WHERE first_name = '" + firstName + "' AND last_name = '" + lastName + "'));");
 		            
 		            out.write("<table border ='1'>" +
 		            		"<tr>" +
+		            		"<th>Book ID</th>" +
 		            		"<th>Title</th>" +
 		            		"<th>Price</th>" +
 		            		"</tr>");
 		            double total = 0;
 		            while (rs.next()) {
-	            	    out.write("<tr><td>" + rs.getString(1) + "</td>");
-	            	    out.write("<td>$" + rs.getDouble(2) + "0</td></tr>");
-	            	    total += rs.getDouble(2);
+		            	out.write("<tr><td>" + rs.getInt("book_id") + "</td>");
+		            	out.write("<td>" + rs.getString("title") + "</td>");
+	            	    out.write("<td>$" + rs.getDouble("price") + "0</td></tr>");
+	            	    total += rs.getDouble("price");
 	            	}
-		            out.write("<tr><th>Total</th>");
+		            out.write("<tr><th>Total</th><th></th>");
 		            out.write("<th>$" + total + "0</th></tr>");
 		            out.write("</table>");
 		            
@@ -91,8 +93,15 @@
 		    %>
 			
 			<br>
+			<form action="./removeCart.jsp" method="post">
+				Enter Book ID to remove from Cart: 
+	        	<input type="number" name="book_id" class="searchBox"/>
+	        	<input type="submit" value="Remove" class="button"/><br><br>
+			</form>
+			
 			<form action="./checkout.jsp" method="post">
-				<button type="submit" class="checkoutButton">Checkout</button>
+				Proceed to Checkout: 
+				<button type="submit" class="button">Checkout</button>
 			</form>
         	
     	</div>
