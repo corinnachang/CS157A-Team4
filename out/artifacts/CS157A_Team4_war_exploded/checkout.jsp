@@ -44,13 +44,13 @@
     <%
         //^if submit button pressed, clear cart
     String x = request.getParameter("submit");
-    if(x.equals("confirm")) {
+    if(x!= null && x.equals("confirm")) {
         try {
             java.sql.Connection con;
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook", user, password);
             Statement st = con.createStatement();
-            st.executeUpdate("DELETE FROM shopping_cart LIMIT 1000");
+            st.executeUpdate("DELETE FROM shopping_cart");
             st.close();
             con.close();
         }catch (SQLException e) {
