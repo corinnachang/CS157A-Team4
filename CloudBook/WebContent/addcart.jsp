@@ -5,7 +5,7 @@
 
 <html>
 <head>
-	<title>Home Page</title>
+	<title>Add to Cart</title>
 </head>
 
 <body>
@@ -14,12 +14,9 @@
 		<h1>Book successfully added to Cart!</h1>
 	
 		<%
-		String book_title = request.getParameter("book_title");
-		String book_author = request.getParameter("book_author");
-		String customer_firstName = request.getParameter("customer_firstName");
-		String customer_lastName = request.getParameter("customer_lastName");
+		String book_id = request.getParameter("book_id");
+		String customer_username = request.getParameter("customer_username");
 		
-		int book_id = 0;
 		int customer_id = 0;
 		
 		try
@@ -29,17 +26,8 @@
 		    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudBook?autoReconnect=true&useSSL=false","root", "root");
 		         
 		    Statement st=con.createStatement();
-		    ResultSet rs = st.executeQuery("SELECT book_id FROM book WHERE title = '" + book_title + "' AND "
-		    		+ "author_id IN (SELECT author_id FROM author "
-		    		+ "WHERE last_name = '" + book_author + "') ");
-		    
-		    while (rs.next()) {
-        	    book_id = rs.getInt("book_id");
-        	}
-		    
-		    
-		    rs = st.executeQuery("SELECT customer_id FROM customer "
-		    		+ "WHERE first_name = '" + customer_firstName +"' AND last_name = '" + customer_lastName + "' ");
+		    ResultSet rs = st.executeQuery("SELECT customer_id FROM customer "
+		    		+ "WHERE username = '" + customer_username + "' ");
 		    
 		    while (rs.next()) {
         	    customer_id = rs.getInt("customer_id");
