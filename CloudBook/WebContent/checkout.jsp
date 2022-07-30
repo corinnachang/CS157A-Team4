@@ -15,8 +15,13 @@
     try {
         java.sql.Connection con;
         Class.forName("com.mysql.jdbc.Driver");
+<<<<<<< Updated upstream
         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook",user, password);
         out.println("Your Cart: <br/>");
+=======
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook", "root", "Cheah_123");
+        
+>>>>>>> Stashed changes
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM book");
         Double total = 0.0;
