@@ -43,21 +43,17 @@
 		            Class.forName("com.mysql.jdbc.Driver");
 		            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook?autoReconnect=true&useSSL=false", user, password);
 		
-		
+					//set username and password to inactive so user can't log in anymore
+					//but we still have records of their purchases in checkout
 		            Statement stmt = con.createStatement();
-		            stmt.execute("DELETE FROM customer WHERE customer_id=" + customerID);
+		            stmt.execute("UPDATE customer SET username='INACTIVE', `password`='INACTIVE' WHERE customer_id = " + customerID);
 			        
-		            String sqlStr = "SELECT * FROM customer WHERE customer_id = " + customerID;
-		            ResultSet rs = stmt.executeQuery(sqlStr);
-			
-				    if (rs.next()) {
-				    	%><h1>User not deleted!</h1><%
-				    } else {
-				    	%><h1>User successfully deleted!</h1><%
-				    }
-			            
-		            rs.close();
-		            stmt.close();
+		          	//clear shopping cart
+			        stmt.execute("DELETE FROM shopping_cart WHERE customer_id =" + customerID);
+		          
+		            %><h1>User successfully deleted!</h1><%
+				    
+			        stmt.close();
 		            con.close();
 		        } catch(SQLException e) {
 		            out.println("SQLException caught: " + e.getMessage());
