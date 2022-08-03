@@ -35,9 +35,7 @@
 			
 			<%
 	        String user = "root";
-
 	        String password = "root";
-
 	        try {
 	
 	            java.sql.Connection con;

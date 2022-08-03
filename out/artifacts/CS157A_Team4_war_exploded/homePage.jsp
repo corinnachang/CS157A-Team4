@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Home Page</title>
-  </head>
-  <body>
-    <div align="center">
-      <h1>CloudBook</h1>
-      <nav>     
-        <a href="./homePage.jsp">Home</a></br>
-        <a href="./checkout.jsp">Check Out</a></br>
-        <a href="./login.jsp">Login</a></br>
-        <a href="./newUser.jsp">Create Account</a></br></br>
-      </nav>
-      <tr>
-        <td>Search for books: </td>
-        <td><input type="text" name="search" /></td>
-      </tr>
-      <input type="submit" value="Submit" />
-    </div>
-  </body>
+<head>
+	<title>Home Page</title>
+	<style>
+		.searchBox {
+            border: 3px solid #2581DC;
+            border-radius: 5px 5px 5px 5px;
+            outline: none;
+		}
+
+		.searchButton {
+            color: white;
+            background: #2581DC;
+            border: 3px solid #2581DC;
+            border-radius: 5px 5px 5px 5px;
+            outline: none;            
+		}
+	</style>
+</head>
+<body>
+	<jsp:include page="header.jsp"/><br>
+	<div align="center">
+		<h3>Search by Title, Author, Publisher, or Genre:</h3>
+		<form action ="./Search.jsp">
+        	<input type="text" name="user" class="searchBox"/>
+        	<input type="submit" value="Search" class="searchButton"/>
+    	</form>
+	</div>
+</body>
 </html>

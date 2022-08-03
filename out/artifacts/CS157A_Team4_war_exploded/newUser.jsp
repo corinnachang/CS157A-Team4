@@ -3,17 +3,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-        <title>CloudBook Registration</title>
+        <title>CloudBook Registration</title> 
+        <style>
+			.button {
+				color: white;
+	            background: #2581DC;
+	            border: 3px solid #2581DC;
+	            border-radius: 5px 5px 5px 5px;
+	            outline: none;
+			}
+    	</style>
     </head>
     <body>
-        <nav>     
-            <a href="./homePage.jsp">Home</a>
-            <a href="./login.jsp">Login</a>
-            <a href="./newUser.jsp">Create Account</a></br>
-        </nav>
+    	<jsp:include page="header.jsp"/><br>
         <div align="center">
-            <h1>Create account</h1>
+            <h1>Create Account</h1>
   			<form action="<%= request.getContextPath() %>/register" method="post">
              <table>
               <tr>
@@ -33,11 +37,11 @@
                <td><input type="password" name="password" /></td>
               </tr>
               <tr>
-               <td>Email</td>
-               <td><input type="text" name="email" /></td>
+               <td>Address</td>
+               <td><input type="text" name="address" /></td>
               </tr>
              </table>
-             <input type="submit" value="Submit" />
+             <input type="submit" value="Submit" class="button"/>
             </form>
            </div>
     </body>
