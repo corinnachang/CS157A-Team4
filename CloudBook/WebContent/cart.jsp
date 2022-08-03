@@ -1,4 +1,5 @@
 <%@ page import="java.sql.*"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -72,17 +73,21 @@
 		            		"<th>Price</th>" +
 		            		"</tr>");
 		            double total = 0;
+		            ArrayList<Integer> bookList = new ArrayList<Integer>();
+		            
 		            while (rs.next()) {
 		            	out.write("<tr><td>" + rs.getInt("book_id") + "</td>");
 		            	out.write("<td>" + rs.getString("title") + "</td>");
 	            	    out.write("<td>$" + rs.getDouble("price") + "0</td></tr>");
 	            	    total += rs.getDouble("price");
+	            	    bookList.add(rs.getInt("book_id"));
 	            	}
 		            out.write("<tr><th>Total</th><th></th>");
 		            out.write("<th>$" + total + "0</th></tr>");
 		            out.write("</table>");
 		            
 		            session.setAttribute("total", total);
+		            session.setAttribute("bookList", bookList);
 		            
 		            rs.close();
 		            stmt.close();

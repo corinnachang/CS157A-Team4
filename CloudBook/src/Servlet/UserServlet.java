@@ -49,7 +49,7 @@ public class UserServlet extends HttpServlet {
 
         //redirect to success.jsp to indicate successfully user added
         //response.sendRedirect("success.jsp");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("userCreated.jsp");
         dispatcher.forward(request, response);
     }
 }

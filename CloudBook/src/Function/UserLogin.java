@@ -21,7 +21,7 @@ public class UserLogin {
 		Statement statement = connection.createStatement();
 		ResultSet rs = statement.executeQuery(selectSql);
 		
-		//String pwd = "";
+		//
 		if(rs.next())
         {
             user.setFirstName(rs.getString("first_name"));
