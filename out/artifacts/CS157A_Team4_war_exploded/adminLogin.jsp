@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>User Login</title>
+        <title>Admin Login</title>
         <style>
         	.inputBox {
 	            border: 3px solid #2581DC;
@@ -21,12 +21,16 @@
     <body>
     	<jsp:include page="header.jsp"/><br>
         <div align="center">
-            <h1>User Login</h1>
-            <form action="<%=request.getContextPath()%>/login" method="post">
-	            <label>Username: </label>
-	            <input type="text" name="username" class="inputBox"/><br><br>
-	            <label for="password">Password: </label>
-	            <input type="text" name="password" class="inputBox"/><br>
+            <h1>Admin Login</h1>
+            <form action="<%=request.getContextPath()%>/adminLogin" method="post">
+	            <label>Admin ID: </label>
+	            <input type="text" name="adminID" class="inputBox"/><br><br>
+	            
+	            <label>First Name: </label>
+	            <input type="text" name="firstName" class="inputBox"/><br><br>
+	            
+	            <label>Last Name: </label>
+	            <input type="text" name="lastName" class="inputBox"/><br>
 	            ${message}<br>           
 	            <button type="submit" class="loginButton">Login</button>
             </form>
@@ -38,13 +42,15 @@
 	    $(document).ready(function() {
 	        $("#loginForm").validate({
 	            rules: {
-	                username: "required",
-	                password: "required",
+	            	adminID: "required",
+	            	firstName: "required",
+	            	lastName: "required",
 	            },
 	             
 	            messages: {
-	                username: "Please enter username",
-	                password: "Please enter password",
+	            	adminID: "Please enter ID",
+	            	firstName: "Please enter first name",
+	            	lastName: "Please enter last name",
 	            }
 	        });
 	    });
