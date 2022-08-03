@@ -1,9 +1,13 @@
+package Servlet;
 // Connects tomcat/newUser.jsp to UserInser.java
 
 import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+
+import Function.UserInsert;
+import Model.User;
 
 
 @WebServlet("/register")
@@ -26,7 +30,7 @@ public class UserServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String email = request.getParameter("email");
+        String address = request.getParameter("address");
 
         //enter user input into new user
         User user = new User();
@@ -34,7 +38,7 @@ public class UserServlet extends HttpServlet {
         user.setLastName(lastName);
         user.setUsername(username);
         user.setPassword(password);
-        user.setEmail(email);
+        user.setAddress(address);
 
         try {
         	userInsert.registerUser(user); //register user
@@ -44,6 +48,8 @@ public class UserServlet extends HttpServlet {
         }
 
         //redirect to success.jsp to indicate successfully user added
-        response.sendRedirect("success.jsp");
+        //response.sendRedirect("success.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");
+        dispatcher.forward(request, response);
     }
 }

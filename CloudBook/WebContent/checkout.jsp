@@ -3,36 +3,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CloudBook Check Out</title>
+<title>CloudBook Check Out</title>
 </head>
 <body>
-<h1>CloudBook Check Out</h1>
-<%
-    String db = "cloudbook";
-    String user; // assumes database name is the same as username
-    user = "root";
-    String password = "Cheah_123";
+	<jsp:include page="header.jsp" /><br>
+	<div align = center>
+	<h1>CloudBook Check Out</h1>
+
+
+	<%
+	String firstName = (String)session.getAttribute("firstName"); 		
+	String lastName = (String)session.getAttribute("lastName"); 
+	String address = (String)session.getAttribute("address"); 
+	Double total = (Double) session.getAttribute("total");
+	
     try {
         java.sql.Connection con;
         Class.forName("com.mysql.jdbc.Driver");
-<<<<<<< Updated upstream
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook",user, password);
+
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook", "root", "root");
         out.println("Your Cart: <br/>");
-=======
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook", "root", "Cheah_123");
-        
->>>>>>> Stashed changes
+
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM book");
-        Double total = 0.0;
-        while (rs.next()) {
-            out.println("BOOK NAME: " + rs.getString("book.title") + " - PRICE: $" + rs.getString("book.price") + " - BOOK ID: "+ rs.getInt("book.book_id") + "<br/><br/>");
-            total += rs.getDouble("book.price");
+        ResultSet rs = stmt.executeQuery("SELECT customer_id FROM customer "
+        		+ "WHERE first_name='" + firstName + "' AND last_name='" + lastName + "' ");
+        
+        int customer_id = 0;
+        if (rs.next()) {
+            customer_id = rs.getInt("customer_id");
         }
+        
+        stmt.execute("INSERT INTO checkout (customer_id, amount) VALUES (" + customer_id + ", " + total + ") ");
+        
+        //remove from inventory, clear shopping cart
+        
+        
+        
+        
         rs.close();
         stmt.close();
         con.close();
-        out.println("Total will be:" + total);
+        
+        out.println("Hi, " + firstName + " " + lastName + ".<br>");
+        out.println("Your item(s) will be delivered to " + address + "<br>");
+        out.println("Your total is $" + total + "0<br>");
+        out.println("Thank you for shopping with us!<br>");
         //get all books' prices from book table
         //sum them up add into amount of checkout table
         //print amount
@@ -68,5 +83,6 @@
 %>
 <br>
 <a href="./homePage.jsp">Home</a>
+
 </body>
 </html>
