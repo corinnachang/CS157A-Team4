@@ -72,4 +72,48 @@ try {
     <%--<a href="#" OnClick=" return <%rs = statement.executeQuery("SELECT * from details order by id, name, address desc;");%>"</a>--%>
     <th style="cursor: pointer;"><a href="" onclick="tsDraw(0,'my_table'); return false">ID</a></th>
     <%--<%String string = response.encodeURL("");%>--%>
+    <th style="cursor: pointer;"><a href="" onclick="tsDraw(1,'my_table'); return false">NAME</a></th>
+    <th style="cursor: pointer;"><a href="" onclick="tsDraw(1,'my_table'); return false">ADDRESS</a></th>
+    </thead>
+    <%
+    while (rs.next()) {
+    %>
+
+    <TR>
+        <TD><%=rs.getInt(1)%></TD>
+        <TD><%=rs.getString(2)%></TD>
+        <TD><%=rs.getString(3)%></TD>
+
+
+    <tr>
+        <td><%=rs.getString("title") %></td>
+        <td><%=rs.getString("genre_name") %></td>
+        <td><%=rs.getString("first_name") %></td>
+        <td><%=rs.getString("last_name") %></td>
+        <td><%=rs.getString("publisher_name") %></td>
+        <td>$<%=rs.getDouble("price") %>0</td>
+
+    </tr>
+
+    </TR>
+    <% } %></TABLE>
+    <%
+    rs.close();
+    statement.close();
+    connection.close();
+    }
+
+    catch(Exception ex){
+    %>
+
+    </font>
+
+    <font size="+3" color="red">
+        <%
+        out.println("Unable to connect to database" + ex);
+        }%>
+    </font>
+
+    </body>
+    </html>
 
