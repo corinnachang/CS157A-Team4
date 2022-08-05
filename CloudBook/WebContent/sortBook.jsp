@@ -36,3 +36,28 @@
                         </div>
             </div>
 
+<%
+	        String user = "root";
+	        String password = "Venatorclass";
+	        try {
+
+	            java.sql.Connection con;
+	            Class.forName("com.mysql.jdbc.Driver");
+	            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook?autoReconnect=true&useSSL=false", user, password);
+
+	            Statement stmt = con.createStatement();
+	            String sqlStr = "SELECT * FROM book JOIN listing USING (book_id) "
+                        + "JOIN author USING (author_id) "
+                        + "JOIN publisher USING (publisher_id)"
+                        + "JOIN genre USING (genre_id); ";
+    			ResultSet rs = stmt.executeQuery(sqlStr);
+	            while (rs.next()) {
+	            	%>
+                    <tr>
+                    <td><%=rs.getString("title") %></td>
+                    <td><%=rs.getString("genre_name") %></td>
+                    <td><%=rs.getString("first_name") %></td>
+                    <td><%=rs.getString("last_name") %></td>
+                    <td><%=rs.getString("publisher_name") %></td>
+                    <td><%=rs.getInt("year") %></td>
+                    <td>$<%=rs.getDouble("price") %>0</td>
