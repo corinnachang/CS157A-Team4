@@ -37,39 +37,27 @@
             </div>
 
 <%
-String user = "root";
- String password = "Venatorclass";
-try {
-    String connectionURL = "jdbc:mysql://localhost:3308/HamzaKhan";
-    Connection connection = null;
-    Statement statement = null;
-    ResultSet rs = null;
+	        String user = "root";
+	        String password = "Venatorclass";
+	        try {
 
-    Class.forName("com.mysql.jdbc.Driver");
-    connection = DriverManager.getConnection(connectionURL,"root","");
-    if(!connection.isClosed())
-    %>
+	            java.sql.Connection con;
+	            Class.forName("com.mysql.jdbc.Driver");
+	            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudbook?autoReconnect=true&useSSL=false", user, password);
 
-    <font size="+3" color="blue">
-
-    <%
-    out.println("Successfully connected to " + "Database");
-    statement = connection.createStatement();
-    rs = statement.executeQuery("SELECT * from book");
-    %>
-
-    <script type="text/javascript" src="gs_sortable.1.7.js"></script>
-    <script type="text/javascript">
-    <!--
-    var TSort_Data = new Array ('inventory', 'book','customer','s');
-
-    //tsRegister()
-    // -->
-    </script>
-
-    <TABLE id="my_table" cellpadding="15" border="1" style="background-color: #ffffcc;" >
-    <thead>
-    <%--<a href="#" OnClick=" return <%rs = statement.executeQuery("SELECT * from details order by id, name, address desc;");%>"</a>--%>
-    <th style="cursor: pointer;"><a href="" onclick="tsDraw(0,'my_table'); return false">ID</a></th>
-    <%--<%String string = response.encodeURL("");%>--%>
-
+	            Statement stmt = con.createStatement();
+	            String sqlStr = "SELECT * FROM book JOIN listing USING (book_id) "
+                        + "JOIN author USING (author_id) "
+                        + "JOIN publisher USING (publisher_id)"
+                        + "JOIN genre USING (genre_id); ";
+    			ResultSet rs = stmt.executeQuery(sqlStr);
+	            while (rs.next()) {
+	            	%>
+                    <tr>
+                    <td><%=rs.getString("title") %></td>
+                    <td><%=rs.getString("genre_name") %></td>
+                    <td><%=rs.getString("first_name") %></td>
+                    <td><%=rs.getString("last_name") %></td>
+                    <td><%=rs.getString("publisher_name") %></td>
+                    <td><%=rs.getInt("year") %></td>
+                    <td>$<%=rs.getDouble("price") %>0</td>
