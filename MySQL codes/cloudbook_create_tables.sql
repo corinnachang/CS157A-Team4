@@ -6,7 +6,7 @@ CREATE TABLE `address` (
   `address_id` int NOT NULL AUTO_INCREMENT,
   `address` varchar(100) NOT NULL,
   PRIMARY KEY (`address_id`)
-) AUTO_INCREMENT=11;
+);
 
 CREATE TABLE `customer` (
   `customer_id` int NOT NULL AUTO_INCREMENT,
@@ -18,26 +18,26 @@ CREATE TABLE `customer` (
   PRIMARY KEY (`customer_id`),
   KEY `address_id` (`address_id`),
   CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`)
-) AUTO_INCREMENT=11;
+);
 
 CREATE TABLE `author` (
   `author_id` int NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   PRIMARY KEY (`author_id`)
-) AUTO_INCREMENT=11;
+);
 
 CREATE TABLE `publisher` (
   `publisher_id` int NOT NULL AUTO_INCREMENT,
   `publisher_name` varchar(45) NOT NULL,
   PRIMARY KEY (`publisher_id`)
-) AUTO_INCREMENT=11;
+);
 
 CREATE TABLE `genre` (
   `genre_id` int NOT NULL AUTO_INCREMENT,
   `genre_name` varchar(45) NOT NULL,
   PRIMARY KEY (`genre_id`)
-) AUTO_INCREMENT=16;
+);
 
 CREATE TABLE `book` (
   `book_id` int NOT NULL AUTO_INCREMENT,
@@ -54,14 +54,14 @@ CREATE TABLE `book` (
   CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`),
   CONSTRAINT `book_ibfk_2` FOREIGN KEY (`publisher_id`) REFERENCES `publisher` (`publisher_id`),
   CONSTRAINT `book_ibfk_3` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`)
-) AUTO_INCREMENT=13;
+);
 
 CREATE TABLE `admin` (
   `admin_id` int NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   PRIMARY KEY (`admin_id`)
-) AUTO_INCREMENT=11;
+);
 
 CREATE TABLE `listing` (
   `listing_id` int NOT NULL AUTO_INCREMENT,
@@ -72,7 +72,7 @@ CREATE TABLE `listing` (
   KEY `admin_id` (`admin_id`),
   CONSTRAINT `listing_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
   CONSTRAINT `listing_ibfk_2` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`)
-) AUTO_INCREMENT=26;
+);
 
 CREATE TABLE `shopping_cart` (
   `cart_id` int NOT NULL AUTO_INCREMENT,
@@ -83,7 +83,7 @@ CREATE TABLE `shopping_cart` (
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `shopping_cart_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
   CONSTRAINT `shopping_cart_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
-) AUTO_INCREMENT=22;
+);
 
 CREATE TABLE `checkout` (
   `checkout_id` int NOT NULL AUTO_INCREMENT,
@@ -92,4 +92,4 @@ CREATE TABLE `checkout` (
   PRIMARY KEY (`checkout_id`),
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `checkout_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
-) AUTO_INCREMENT=11;
+);
