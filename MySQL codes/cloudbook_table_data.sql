@@ -8,7 +8,12 @@ INSERT INTO `address` VALUES
 (7,'456 Escobar Way'),
 (8,'1166 Changhwa Street'),
 (9,'43 Dadu Avenue'),
-(10,'144 South Hill Loop');
+(10,'144 South Hill Loop'),
+(32,'122 North Street'),
+(33,'1 Washington Sq'),
+(34,'931 Buffalo Court'),
+(35,'589 Manson Street'),
+(36,'438 Yoyo Avenue');
 
 INSERT INTO `customer` VALUES 
 (1,'Penelope','Guiness','penelopeg','password',2),
@@ -20,7 +25,12 @@ INSERT INTO `customer` VALUES
 (7,'Grace','Wahlberg','gracew','password',6),
 (8,'Matthew','Kilmer','matthewk','password',8),
 (9,'Joe','Peck','joep','password',9),
-(10,'Christina','Wayne','christinaw','password',10);
+(10,'Christina','Wayne','christinaw','password',10),
+(23, 'cheah', 'cheah', 'INACTIVE', 'INACTIVE', 32),
+(24, 'corinna', 'chang', 'corinnachang', 'password', 33),
+(25, 'Ellen', 'Jones', 'ellenj', 'password', 34),
+(26, 'John', 'Gauss', 'johng', 'password', 35),
+(27, 'Christopher', 'Chase', 'christopherc', 'password', 36);
 
 INSERT INTO `author` VALUES 
 (1,'Joan','Aiken'),
@@ -32,7 +42,12 @@ INSERT INTO `author` VALUES
 (7,'Jesse','McCorkle'),
 (8,'Jill','McCorkle'),
 (9,'Michael','Smith'),
-(10,'John','Tolkien');
+(10,'John','Tolkien'),
+(11, 'Xiran', 'Zhao'),
+(12, 'Leda', 'Schubert'),
+(13, 'Greg', 'Rucka'),
+(14, 'Lev', 'Grossman'),
+(15, 'James', 'Patterson');
 
 INSERT INTO `publisher` VALUES 
 (1,'Algonquin Books'),
@@ -44,7 +59,12 @@ INSERT INTO `publisher` VALUES
 (7,'PerfectBound'),
 (8,'Prentice Hall'),
 (9,'Sams'),
-(10,'William Morrow');
+(10,'William Morrow'),
+(11, 'Penguin Teen'),
+(12, 'Chandlewick Press'),
+(13, 'Image Comics'),
+(14, 'Archala'),
+(15, 'Little Brown');
 
 INSERT INTO `genre` VALUES 
 (1,'Action'),
@@ -75,7 +95,12 @@ INSERT INTO `book` VALUES
 (9,'Scandalous Risks',5,5,6,2009,25),
 (10,'Spares',9,6,10,1998,100),
 (11,'Tales from the Perilous Realm',10,6,1,2002,200),
-(12,'Working Effectively with Legacy Code',3,8,2,2004,50);
+(12,'Working Effectively with Legacy Code',3,8,2,2004,50),
+(13, 'Iron Widow', 11, 11, 9, 2021, 35),
+(14, 'Firsts and Lasts', 12, 12, 4, 2022, 9),
+(15, 'The Old Guard', 13, 13, 5, 2017, 20),
+(16, 'The Silver Arrow', 14, 14, 11, 2020, 25),
+(17, 'Shattered', 15, 15, 6, 1947, 8);
 
 INSERT INTO `admin` VALUES 
 (1,'Todd','Bean'),
@@ -87,7 +112,12 @@ INSERT INTO `admin` VALUES
 (7,'Cameron','Williams'),
 (8,'Julia','Hopkins'),
 (9,'Jane','Jackman'),
-(10,'Adam','Hopper');
+(10,'Adam','Hopper'),
+(11, 'Lucca', 'Orr'),
+(12, 'George', 'Kane'),
+(13, 'Simon', 'Delgado'),
+(14, 'Joey', 'Knights'),
+(15, 'Rhea', 'Robertson');
 
 INSERT INTO `listing` VALUES 
 (1,1,1),
@@ -149,4 +179,17 @@ INSERT INTO `checkout` VALUES
 (7,7,157),
 (8,8,22),
 (9,9,237),
-(10,10,237);
+(10,10,237),
+(11, 10, 237),
+(12, 10, 237),
+(13, 1, 262),
+(14, 3, 52),
+(15, 3, 52),
+(16, 3, 52),
+(17, 3, 17),
+(18, 23, 15),
+(19, 23, 15),
+(20, 23, 15),
+(21, 23, 27),
+(22, 3, 17),
+(23, 4, 113);
